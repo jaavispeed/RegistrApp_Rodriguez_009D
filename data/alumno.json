@@ -1,0 +1,16 @@
+{
+  "alumno": [
+    {
+      "id": 1,
+      "nombre": "Javier Rodriguez"
+    },
+    {
+      "nombre": "aa",
+      "id": 2
+    },
+    {
+      "nombre": "asdsa",
+      "id": 3
+    }
+  ]
+}

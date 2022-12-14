@@ -1,0 +1,81 @@
+<!-- Tipos de letras utilizadas-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+
+
+<ion-content>
+<div id="header">
+  
+  
+</div>
+<div class="wrapper">
+<!-- Mensaje que muestra si el formulario es valido o no.
+  
+  <ion-list-header>
+    <ion-label>Formulario Válido: {{formulario.valid}} </ion-label>
+  </ion-list-header> 
+
+  -->
+
+
+  <form>
+    <ion-card class="form-wrapper">
+      <ion-card-content>
+        <div class="line-text" >
+          <span class="lines"></span>
+          <span class="text">¡Iniciar Sesión!</span>
+        </div>
+        
+        <form [formGroup] = "formularioLogin" #formulario="ngForm" (ngSubmit) ="onSubmit()" > <!--Login-->
+          <!-- Email que debe ingresar el usuario, es obligatorio y esta validado -->
+          <ion-item>
+            <ion-icon name="mail"></ion-icon>
+            <ion-input type="email" placeholder="Email" name="email" value="" [(ngModel)]= "usuario.email" formControlName="correo"
+            pattern="^([a-zA-Z0-9_\-\.]+)@([a-zA-Z0-9_\-\.]+)\.([a-zA-Z]{2,5})$"
+            required class="fuente"></ion-input>
+          </ion-item>
+          <!--VALIDACION CORREO-->
+          <span *ngIf="f['correo'].getError('pattern')!=null" class="letra" id="prueba1">Formato de correo invalido.</span>
+          <span *ngIf="f['correo'].getError('required')!=null" class="letra">Campo vacio.</span><br>
+          <span *ngIf="f['correo'].getError('minlength')!=null" class="letra">Minimo 2 caracteres.</span>
+          <!--VALIDACION-->
+
+
+          <!-- Contraseña que debe ingresar el usuario, es obligatorio y esta validado -->
+          <ion-item>
+            <ion-icon name="lock-closed"></ion-icon>
+            <ion-input type="password" placeholder="Contraseña" name="password" value="" [(ngModel)]= "usuario.password"  formControlName="password"
+            required class="fuente"></ion-input>
+          </ion-item>
+          <!--VALIDACION PASSWORD-->
+          <span *ngIf="f['password'].getError('required')!=null" class="letra">Campo vacio.</span>
+          <!--VALIDACION-->
+          <!--VALIDACION-->
+          <span *ngIf="f['password'].getError('minlength')!=null" class="letra">Minimo 2 caracter.</span>
+          <!--VALIDACION-->
+          
+        </form><!--Login-->
+
+
+        <!-- Boton submit que esta desactivado hasta que se ingrese el email y contraseña -->
+        <ion-button  expand="block" [disabled] ="formulario.invalid" (click)="Ingresar()" class="fuente"> 
+          Iniciar Sesión
+        </ion-button>
+        <ion-button  expand="block" fill="outline" routerLink="/registro" class="fuente"> 
+          Registrarse
+        </ion-button>
+
+      </ion-card-content>
+    </ion-card>
+</form>
+  
+
+</div>
+</ion-content>

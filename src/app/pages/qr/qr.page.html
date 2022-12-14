@@ -1,0 +1,62 @@
+<!-- Tipos de letras utilizadas-->
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Oswald:wght@400;700&display=swap" rel="stylesheet">
+
+
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Roboto:ital,wght@1,900&display=swap" rel="stylesheet">
+
+
+
+<ion-content>
+  <div id="header">
+    <div id="app-bar">
+      <!-- Flecha para devolverse -->
+      <ion-icon name="arrow-back" routerLink="/docente" color="primary"></ion-icon>
+    </div>
+  </div>
+  
+  <div class="wrapper">
+    <ion-card class="form-wrapper">
+      <ion-item>
+        <ion-select  placeholder="Asignatura" class="fuente2"  [(ngModel)]="usuario.nom">
+          <ion-select-option value="Programación" class="fuente2">Programación movil</ion-select-option>
+          <ion-select-option value="Arquitectura" class="fuente2"> Arquitectura</ion-select-option>
+          <ion-select-option value="Estadistica" class="fuente2"> Estadistica</ion-select-option>
+      </ion-select>
+       </ion-item>
+       <ion-label class="">Fecha: {{cortado}} </ion-label>
+
+      <ion-button (click)="GenerarQr()" expand="block"  shape="round">
+        Generar QR
+      </ion-button>
+      <ion-card-content>
+        <div>
+          <qrcode class="code"
+          [routerLink]="['/listar-alumno']"
+          [qrdata]="qrCodeString"
+          [width]="200"
+          [errorCorrectionLevel]="'M'">
+          </qrcode>
+        </div>
+
+        <ion-button (click)="VerQr()" expand="block" fill="outline" shape="round">
+          View QR
+        </ion-button>
+
+        <ion-item class="fuente2">
+          <ion-label class="fuente3">{{scannedResult}} </ion-label><br>
+          <ion-label class="fuente3">{{fechascaned}} </ion-label>
+        </ion-item>
+
+      </ion-card-content>
+    </ion-card>
+
+
+
+  </div>
+  </ion-content>
+  
